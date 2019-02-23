@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 适配手机页面 -->
-<meta name="viewport"
-      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <head>
     <meta charset="UTF-8">
     <title>渐变状态栏</title>
     <style>
-        body {
-            margin: 0px;
+        html, body {
+            height: 100%;
         }
+
+        body {
+            min-height: 19.2rem;
+            margin: 0;
+            padding: 0;
+            background: #efefef;
+            position: relative;
+            font-family: "Microsoft Yahei", Tahoma, Helvetica, Arial
+        }
+
+        .wrapper {
+            position: relative;
+            margin: 0 auto;
+            max-width: 16rem;
+            width: 16rem;
+            overflow: hidden;
+            background-color: aqua;
+            top: 0;
+        }
+
         .module-layer {
-            width: 100%;
+            width: 16rem;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 100000;
+            height: 2.2rem;
         }
 
         .module-layer-content {
             position: relative;
-            min-width: 320px;
-            max-width: 750px;
             width: 100%;
+            height: 2.2rem;
             margin: 0 auto;
         }
 
-        .module-layer-bg {
-            width: 100%;
-            height: 100%;
-            background: #000;
-            opacity: .7;
-            position: absolute;
+        .search-box-cover {
+            width: 16rem;
+            position: fixed;
             top: 0;
             left: 0;
-            z-index: -1;
-        }
-
-        .layer-head-name {
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            padding: 0 50px;
-            font-size: 20px;
+            height: 2.2rem;
+            background-color: #ee2978;
         }
 
         .layer-return, .layer-share {
@@ -94,26 +101,20 @@
         }
 
         .search-box {
-            height: 30px;
-            border-radius: 20px;
-            top: 10px;
+            margin: 0 1.8rem;
+            height: 1.2rem;
+            border-radius: 1.2rem;
+            top: .5rem;
             overflow: hidden;
             z-index: 10;
-        }
-
-        .shop-search {
-            position: absolute;
-            height: 1.2rem;
-            padding: .3rem;
-            left: 0px;
         }
 
         .search-box:after {
             content: '';
             display: block;
             width: 100%;
-            height: 30px;
-            background: #e2e2e2;
+            height: 1.2rem;
+            background: #ffffff;
             opacity: .5;
             position: absolute;
             top: 0;
@@ -122,66 +123,107 @@
         }
 
         #shop-input {
-            height: 28px;
-            line-height: 28px;
+            height: 1.2rem;
+            line-height: 1.2rem;
             font-size: 16px;
             position: absolute;
             top: 0;
-            left: 30px;
+            left: 1.2rem;
+            width: 10.3rem;
         }
 
-        .test {
-            background-color: aquamarine;
+        .ad-picture img {
+            width: 100%;
         }
 
+        .search-icon {
+            display: block;
+            background-image: url(../img/search_icon.png);
+            background-size: 100%;
+            width: .8rem;
+            height: .8rem;
+            font-style: normal;
+            margin: .2rem;
+        }
     </style>
+    <script type="text/javascript" src="../static/common/rem.js"></script>
+    <script type="text/javascript" src="../static/jQuery/jquery-3.2.0.min.js"/>
+    <script></script>
 </head>
+
 <body>
-<header class="module-layer">
-    <div class="module-layer-content">
-        <div class="search-box-cover"></div>
-        <!--<p class="layer-return"></p>-->
-        <h1 class="layer-head-name">
+<div class="wrapper">
+    <header class="module-layer">
+        <div class="module-layer-content">
+            <div class="search-box-cover"></div>
             <div class="pr search-box">
-                <img class="shop-search" src="../img/search_icon.png"/>
+                <i class="search-icon"></i>
                 <input id="shop-input" type="text" placeholder="搜索店内商品" value=""/>
             </div>
-        </h1>
-        <!--<p class="layer-share"></p>-->
+        </div>
+    </header>
+    <div class="ad-picture">
+        <img src="../img/home_ad.png" alt="">
     </div>
-</header>
-<div class="test">
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
-    <p>11</p>
+    <div>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+    </div>
 </div>
+
 </body>
+<script>
+    window['adaptive'].desinWidth = 800;
+    window['adaptive'].baseFont = 50;
+    window['adaptive'].init();
+</script>
+<script>
+    $(function () {
+        var $body = $('body');
+        var setCoverOpacity = function (val) {
+            var op = 0;
+            val == 0 ? op = 0 : op = ((($(window).scrollTop() / 150) > 1) ? 1 : ($(window).scrollTop() / 150));
+            $body.find('.search-box-cover').css({
+                opacity: op
+            });
+        }
+        //初始化设置背景透明度
+        setCoverOpacity(0);
+        //监听滚动条事件，改变透明度
+        $(window).scroll(function () {
+            setCoverOpacity();
+        });
+    })
+</script>
 </html>
