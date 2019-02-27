@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐变状态栏和返回顶部</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 19.2rem;
+            margin: 0;
+            padding: 0;
+            background: #efefef;
+            position: relative;
+            font-family: "Microsoft Yahei", Tahoma, Helvetica, Arial
+        }
+
+        .wrapper {
+            position: relative;
+            margin: 0 auto;
+            max-width: 16rem;
+            width: 16rem;
+            overflow: hidden;
+            background-color: aqua;
+            top: 0;
+        }
+
+        .module-layer {
+            height: 2.2rem;
+            width: 100%;
+            max-width: 16rem;
+            position: fixed;
+            top: 0px;
+            z-index: 999;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .module-layer-content {
+            position: relative;
+            width: 100%;
+            height: 2.2rem;
+            margin: 0 auto;
+        }
+
+        .search-box-cover {
+            width: 16rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 2.2rem;
+            background-color: #ee2978;
+        }
+
+        .layer-return, .layer-share {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            z-index: 1;
+        }
+
+        h1 {
+            margin: 0px;
+        }
+
+        .layer-return {
+            left: 0;
+        }
+
+        .layer-share {
+            right: 0;
+        }
+
+        .pr {
+            position: relative;
+        }
+
+        #shop-input::-webkit-input-placeholder {
+            color: #fff;
+        }
+
+        #shop-input:-moz-placeholder {
+            color: #fff;
+        }
+
+        #shop-input::-moz-placeholder {
+            color: #fff;
+        }
+
+        #shop-input:-ms-input-placeholder {
+            color: #fff;
+        }
+
+        #shop-input {
+            border: none;
+            outline: none;
+            background: transparent;
+        }
+
+        .search-box {
+            margin: 0 1.8rem;
+            height: 1.2rem;
+            border-radius: 1.2rem;
+            top: .5rem;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .search-box:after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1.2rem;
+            background: #ffffff;
+            opacity: .5;
+            position: absolute;
+            top: 0;
+            left: 0px;
+            z-index: -1;
+        }
+
+        #shop-input {
+            height: 1.2rem;
+            line-height: 1.2rem;
+            font-size: 16px;
+            position: absolute;
+            top: 0;
+            left: 1.2rem;
+            width: 10.3rem;
+        }
+
+        .ad-picture img {
+            width: 100%;
+        }
+
+        .search-icon {
+            display: block;
+            background-image: url(../img/search_icon.png);
+            background-size: 100%;
+            width: .8rem;
+            height: .8rem;
+            font-style: normal;
+            margin: .2rem;
+        }
+    </style>
+    <script type="text/javascript" src="../static/common/rem.js"></script>
+    <script type="text/javascript" src="../static/jQuery/jquery-3.2.0.min.js"/>
+    <script></script>
+</head>
+
+<body>
+<div class="wrapper">
+    <header class="module-layer">
+        <div class="module-layer-content">
+            <div class="search-box-cover"></div>
+            <div class="pr search-box">
+                <i class="search-icon"></i>
+                <input id="shop-input" type="text" placeholder="搜索店内商品" value=""/>
+            </div>
+        </div>
+    </header>
+    <div class="ad-picture">
+        <img src="../img/home_ad.png" alt="">
+    </div>
+    <div>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+        <p>11</p>
+    </div>
+</div>
+
+</body>
+<script>
+    window['adaptive'].desinWidth = 800;
+    window['adaptive'].baseFont = 50;
+    window['adaptive'].init();
+</script>
+<script>
+    $(function () {
+        var $body = $('body');
+        var setCoverOpacity = function (val) {
+            var op = 0;
+            val == 0 ? op = 0 : op = ((($(window).scrollTop() / 150) > 1) ? 1 : ($(window).scrollTop() / 150));
+            $body.find('.search-box-cover').css({
+                opacity: op
+            });
+        }
+        //初始化设置背景透明度
+        setCoverOpacity(0);
+        //监听滚动条事件，改变透明度
+        $(window).scroll(function () {
+            setCoverOpacity();
+        });
+    })
+</script>
+</html>
