@@ -28,12 +28,15 @@
         }
 
         .module-layer {
-            width: 16rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100000;
             height: 2.2rem;
+            width: 100%;
+            max-width: 16rem;
+            position: fixed;
+            top: 0px;
+            z-index: 999;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .module-layer-content {
@@ -45,7 +48,7 @@
 
         .search-box-cover {
             width: 16rem;
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             height: 2.2rem;
@@ -145,6 +148,17 @@
             font-style: normal;
             margin: .2rem;
         }
+
+
+        .scroll_to_top {
+            width: 46px;
+            height: 46px;
+            position:fixed;
+            right:5%;
+            bottom:5%;
+            display: none;
+            background:url(../img/scroll_to_top.png) no-repeat left top;
+        }
     </style>
     <script type="text/javascript" src="../static/common/rem.js"></script>
     <script type="text/javascript" src="../static/jQuery/jquery-3.2.0.min.js"/>
@@ -202,6 +216,8 @@
     </div>
 </div>
 
+<!--返回顶部-->
+<a href="javascript:;" class="scroll_to_top" title="回到顶部"></a>
 </body>
 <script>
     window['adaptive'].desinWidth = 800;
@@ -210,6 +226,12 @@
 </script>
 <script>
     $(function () {
+        gradualSearchBar();
+        backToTop();
+    })
+
+    // 沉浸式搜索栏
+    function gradualSearchBar() {
         var $body = $('body');
         var setCoverOpacity = function (val) {
             var op = 0;
@@ -224,6 +246,39 @@
         $(window).scroll(function () {
             setCoverOpacity();
         });
-    })
+    }
+
+    // 回到顶部
+    function backToTop() {
+        var topbtn = $(".scroll_to_top");
+        var timer = null;
+        //获取屏幕的高度
+        var pagelookheight = document.documentElement.clientHeight;
+
+        window.onscroll = function(){
+            //滚动超出高度，显示按钮，否则隐藏
+            var backtop = $(document).scrollTop();
+            //  滚动超过100即显示
+            if(backtop >= 100){
+                $(".scroll_to_top").show();
+            }
+            //   不显示
+            else{
+                $(".scroll_to_top").hide();
+            }
+        }
+
+        $(".scroll_to_top").click(function () {
+            timer = setInterval(function () {
+                var backtop = $(document).scrollTop();
+                //速度操作  减速
+                var speedtop = backtop/5;
+                $(document).scrollTop(backtop - speedtop);  //高度不断减少
+                if(backtop ==0){  //滑动到顶端
+                    clearInterval(timer);  //清除计时器
+                }
+            }, 30);
+        })
+    }
 </script>
 </html>
